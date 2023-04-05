@@ -67,6 +67,7 @@
         <hr>
         <form id="myfrom" class="card" action="">
             <div class="msg"></div>
+            <br>
             <h5>Contact Me</h5>
             <div class="">
                 <div class="medium-6 columns">
@@ -111,13 +112,23 @@
                             message: message.val()
                         }, success: function (response) {
                             $("#myform")[0].reset();
-                            $('')
+                            $('.msg').text("Message send successfully");
                         }
-                    });
-
-                    
+                    });     
                 }
             }
+
+            function isNotEmpty(caller) {
+                if(caller.val() == "") {
+                    caller.css('border', '1px solid red');
+                    return false;
+                }
+                else caller.css('border', '');
+
+                return true;
+            }
+
+            
         </script>
     </div>
 
