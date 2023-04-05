@@ -65,8 +65,9 @@
         </div>
         <h5>Contact Me</h5>
         <hr>
-        <form action="">
-            <div class="row">
+        <form id="myfrom" class="card" action="">
+            
+            <div class="msg">
                 <div class="medium-6 columns">
                     <label for="name">Name:
                         <input type="text" placeholder="Your name">
@@ -81,7 +82,7 @@
                     <label for="message">Message:
                         <textarea name="message" placeholder="None" ></textarea>
                     </label>
-                    <button class="button">Send</button>
+                    <button class="button" type="button" onclick="sendEmail()" value="Send an email">Send</button>
                 </div>
             </div>
             <div class="footer">
@@ -91,6 +92,32 @@
                 </script>.All Rights Reserved
             </div>
         </form>
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function sendEmail(){
+                var name = $("#name");
+                var email = $("#email");
+                var message = $("#message");
+
+                if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(message)) {
+                    $.ajax({
+                        url: 'sendEmail.html',
+                        method: 'POST',
+                        dataType: 'json',
+                        data: {
+                            name: name.val(),
+                            email: email.val(),
+                            message: message.val()
+                        }, success: function (response) {
+                            $("#myform")[0].reset();
+                            $('')
+                        }
+                    });
+
+                    
+                }
+            }
+        </script>
     </div>
 
 </body>
