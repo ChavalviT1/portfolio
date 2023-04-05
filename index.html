@@ -65,24 +65,24 @@
         </div>
         
         <hr>
-        <form id="myfrom" class="card" action="">
+        <form id="myfrom" class="card">
             <div class="msg"></div>
             <br>
             <h5>Contact Me</h5>
             <div class="">
                 <div class="medium-6 columns">
                     <label for="name">Name:
-                        <input type="text" placeholder="Your name">
+                        <input type="text" id="name" placeholder="Your name">
                     </label>
                 </div>
                 <div class="medium-6 columns">
                     <label for="name">Email:
-                        <input type="text" placeholder="Your Email">
+                        <input type="text" id="email" placeholder="Your Email">
                     </label>
                 </div>
                 <div class="medium-12 columns">
                     <label for="message">Message:
-                        <textarea name="message" placeholder="None" ></textarea>
+                        <textarea id="message" placeholder="None" ></textarea>
                     </label>
                     <button class="button" type="button" onclick="sendEmail()" value="Send an email">Send</button>
                 </div>
@@ -103,7 +103,7 @@
 
                 if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(message)) {
                     $.ajax({
-                        url: 'sendEmail.html',
+                        url: 'sendEmail.php',
                         method: 'POST',
                         dataType: 'json',
                         data: {
